@@ -1,0 +1,40 @@
+html, body {
+  height : 100%;
+  font-family: 'Montserrat', 'sans-serif';
+}
+
+.full-height {
+  height : 100%;
+}
+
+.vertical-center {
+  display: flex;
+  align-items: center;
+}
+
+.countdown-app__text-info {
+  margin-bottom: 30px;
+}
+
+.countdown-app__button-submit {
+  margin-top: 20px;
+}
+
+.countdown-app__time-span {
+  margin: 0px 10px;
+}
+
+.countdown-app__helper-div {
+  position: absolute;
+  right: -20px;
+  top: 0px;
+  cursor : pointer;
+}
+
+.countdown-app__helper-div span {
+  font-size: 25px;
+}
+
+.tooltip-inner {
+  min-width: 180px;
+}

@@ -1,0 +1,1 @@
+A simple web app to calculate the time left to a specific day.
