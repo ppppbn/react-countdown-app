@@ -5,8 +5,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      birthday : "November 15 , 2018",
-      birthdayToSeconds : 1542214800,
+      birthday : "May 25 , 2018",
+      birthdayToSeconds : 0,
       now : Date.now()/1000,
       days : 0,
       hours : 0,
@@ -58,7 +58,9 @@ class App extends Component {
   componentDidMount = () => {
     this.interval = setInterval(this.tick, 1000);
     var x = this.calculateDay(this.state.birthdayToSeconds, this.state.now);
+    var y = new Date(this.state.birthday);
     this.setState({
+      birthdayToSeconds : y.getTime() / 1000,
       days : x.days,
       hours : x.hours,
       minutes : x.minutes,
@@ -75,7 +77,7 @@ class App extends Component {
       <div className="container-fluid full-height bg-primary">
         <div className="row full-height vertical-center text-center">
           <div className="col-xs-12">
-            <h3 className="text-white countdown-app__text-info">Countdown to my birthday : {this.state.birthday}</h3>
+            <h3 className="text-white countdown-app__text-info">Countdown to your birthday : {this.state.birthday}</h3>
             <h4 className="text-white countdown-app__text-info">
               <span className="countdown-app__time-span">{this.state.days} Day(s)</span>  
               <span className="countdown-app__time-span">{this.state.hours} Hour(s)</span>  
