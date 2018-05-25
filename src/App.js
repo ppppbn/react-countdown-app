@@ -5,7 +5,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      birthday : "May 25 , 2018",
+      birthday : "November 15, 2018",
       birthdayToSeconds : 0,
       now : Date.now()/1000,
       days : 0,
