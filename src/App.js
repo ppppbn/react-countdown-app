@@ -46,6 +46,10 @@ class App extends Component {
     }) 
   };
 
+  lead0 = (num) => {
+    return num < 10 ? "0" + num : num;
+  }
+
   componentWillUnmount = () => {
     clearInterval(this.interval);
   };
@@ -57,10 +61,10 @@ class App extends Component {
           <div className="col-xs-12">
             <h3 className="text-white countdown-app__text-info">Countdown to your birthday : {this.state.birthday}</h3>
             <h4 className="text-white countdown-app__text-info">
-              <span className="countdown-app__time-span">{this.state.days} Day(s)</span>  
-              <span className="countdown-app__time-span">{this.state.hours} Hour(s)</span>  
-              <span className="countdown-app__time-span">{this.state.minutes} Minute(s)</span>
-              <span className="countdown-app__time-span">{this.state.seconds} Second(s)</span>
+              <span className="countdown-app__time-span">{this.lead0(this.state.days)} Day(s)</span>  
+              <span className="countdown-app__time-span">{this.lead0(this.state.hours)} Hour(s)</span>  
+              <span className="countdown-app__time-span">{this.lead0(this.state.minutes)} Minute(s)</span>
+              <span className="countdown-app__time-span">{this.lead0(this.state.seconds)} Second(s)</span>
             </h4>
             <div className="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
               <form onSubmit={this.handleSubmit}>
