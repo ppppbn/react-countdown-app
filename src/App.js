@@ -7,7 +7,6 @@ class App extends Component {
     this.state = { 
       birthday : "November 15, 2018",
       birthdayToSeconds : 0,
-      now : Date.now()/1000,
       days : 0,
       hours : 0,
       minutes : 0,
@@ -20,52 +19,31 @@ class App extends Component {
   };
 
   handleSubmit = (e) => {
-    var x = new Date(this.state.birthday);
     this.setState({
-      birthdayToSeconds : x.getTime() / 1000,
-      birthdayToString : this.calculateDay(x.getTime() / 1000 , this.state.now)
-    })    
+      birthdayToSeconds : new Date(this.state.birthday).getTime() / 1000
+    })
     e.preventDefault();
   };
 
-  calculateDay = (birthday, now) => {
-    var seconds = parseInt(birthday && birthday > now ? birthday - now : 0, 10);
+  getTimeUntil = () => {
+    var seconds = parseInt(this.state.birthdayToSeconds && this.state.birthdayToSeconds > Date.now() / 1000 ?
+       this.state.birthdayToSeconds - Date.now() / 1000 :
+        0, 10);
     var days = Math.floor(seconds / (3600*24));
-    seconds  -= days*3600*24;
+    seconds  -= days * 3600 * 24;
     var hours = Math.floor(seconds / 3600);
-    seconds  -= hours*3600;
+    seconds  -= hours * 3600;
     var minutes = Math.floor(seconds / 60);
-    seconds  -= minutes*60;
-    return {
-      days : days,
-      hours : hours,
-      minutes : minutes,
-      seconds : seconds
-    }
+    seconds  -= minutes * 60;
+    this.setState({days, hours, minutes, seconds});
   }
 
-  tick = () => {
-    var x = this.calculateDay(this.state.birthdayToSeconds, this.state.now);
+  componentWillMount = () => {
     this.setState({
-      now : this.state.now + 1,
-      days : x.days,
-      hours : x.hours,
-      minutes : x.minutes,
-      seconds : x.seconds
-    })
-  }
-
-  componentDidMount = () => {
-    this.interval = setInterval(this.tick, 1000);
-    var x = this.calculateDay(this.state.birthdayToSeconds, this.state.now);
-    var y = new Date(this.state.birthday);
-    this.setState({
-      birthdayToSeconds : y.getTime() / 1000,
-      days : x.days,
-      hours : x.hours,
-      minutes : x.minutes,
-      seconds : x.seconds
-    })
+      birthdayToSeconds : new Date(this.state.birthday).getTime() / 1000
+    }, () => {
+      this.interval = setInterval(this.getTimeUntil, 1000);
+    }) 
   };
 
   componentWillUnmount = () => {
