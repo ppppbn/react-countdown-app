@@ -16,8 +16,21 @@ html, body {
   margin-bottom: 30px;
 }
 
+.countdown-app__button-container {
+  margin-top: 10px;
+}
+
 .countdown-app__button-submit {
-  margin-top: 20px;
+  margin: 20px;
+  min-width: 80px;
+  text-align: center;
+}
+
+.countdown-app__button-nav {
+  margin: 20px;
+  min-width: 80px;
+  text-align: center;
+  font-size: 18px;
 }
 
 .countdown-app__time-span {
@@ -35,6 +48,28 @@ html, body {
   font-size: 25px;
 }
 
+.countdown-app__button-container .fas{
+  margin-right: 10px;
+}
+
 .tooltip-inner {
   min-width: 180px;
+}
+
+.stopwatch__input {
+  border: none;
+  background: inherit;
+  font-size: 24px;
+  width: 50px;
+  text-align: center;
+}
+
+.stopwatch__separated-colon {
+  font-size: 24px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
