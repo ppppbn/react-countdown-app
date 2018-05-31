@@ -26,18 +26,17 @@ class Clock extends PureComponent {
     this.setState({days, hours, minutes, seconds});
   }
 
-  componentWillMount = () => {
+  componentDidMount = () => {
     this.interval = setInterval(this._getTimeUntil, 1000);
+  }
+
+  componentWillUnmount = () => {
+    clearInterval(this.interval);
   }
 
   _lead0 = (num) => {
     return num < 10 ? "0" + num : num;
   }
-
-  componentWillUnmount = () => {
-    clearInterval(this.interval);
-  };
-
 
   render() {
     return (

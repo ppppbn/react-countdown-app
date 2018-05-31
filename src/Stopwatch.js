@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 
-const STOPWATCHSTATE = {
+const STOPWATCH_STATE = {
   started : "started",
   paused : "paused",
   default : "default"
@@ -14,7 +14,7 @@ class Stopwatch extends PureComponent {
         hours : 0,
         minutes : 0,
         seconds : 0,
-        started : STOPWATCHSTATE.default,
+        started : STOPWATCH_STATE.default,
         showNoti : false
       };
     }
@@ -45,14 +45,11 @@ class Stopwatch extends PureComponent {
 
     _handleSubmit = (event) => {
       event.preventDefault();
-      if(this.state.started === STOPWATCHSTATE.default){
+      if(this.state.started === STOPWATCH_STATE.default){
         var time = Number(event.target[0].value) * 3600 + Number(event.target[1].value) * 60 + Number(event.target[2].value);
         var hours = Math.floor((time)/3600);
         var minutes = Math.floor((time - hours * 3600)/60);
         var seconds = Math.floor((time - hours * 3600 - minutes * 60));
-        event.target[0].value = 0;
-        event.target[1].value = 0;
-        event.target[2].value = 0;
         this.setState({
           time : time,
           hours : hours,
@@ -60,13 +57,13 @@ class Stopwatch extends PureComponent {
           seconds : seconds
         }, this._start)
       }
-      else if (this.state.started === STOPWATCHSTATE.paused){
+      else if (this.state.started === STOPWATCH_STATE.paused){
         this._start();
       }
     }
 
     _stopwatch = () => {
-      if(this.state.started === STOPWATCHSTATE.started){
+      if(this.state.started === STOPWATCH_STATE.started){
         if(this.state.time > 0){
           var hours = Math.floor((this.state.time - 1)/3600);
           var minutes = Math.floor((this.state.time - 1 - hours * 3600)/60);
@@ -94,7 +91,7 @@ class Stopwatch extends PureComponent {
         hours : 0,
         minutes : 0,
         seconds : 0,
-        started : STOPWATCHSTATE.default,
+        started : STOPWATCH_STATE.default,
         showNoti : false
       }, () => {
         clearInterval(this.interval);
@@ -103,17 +100,17 @@ class Stopwatch extends PureComponent {
 
     _pause = () => {      
       this.setState({
-        started : STOPWATCHSTATE.paused
+        started : STOPWATCH_STATE.paused
       }, () => {
         clearInterval(this.interval);
       })
     }
 
     _start = () => {
-      if(this.state.started !== STOPWATCHSTATE.started){
+      if(this.state.started !== STOPWATCH_STATE.started && this.state.time){
         this.interval = setInterval(this._stopwatch, 1000);
         this.setState({
-          started : STOPWATCHSTATE.started,
+          started : STOPWATCH_STATE.started,
           showNoti : false
         })
       }
@@ -121,7 +118,7 @@ class Stopwatch extends PureComponent {
     }
 
     componentWillUnmount = () => {
-      this._reset();
+      clearInterval(this.interval);
     }
 
     render() {
@@ -143,7 +140,7 @@ class Stopwatch extends PureComponent {
                   <input type="number" className="stopwatch__input" onChange={this._handleChangeSecond} value={seconds}></input>
                   <div className="countdown-app__button-container">
                   {
-                    started !== STOPWATCHSTATE.started ? 
+                    started !== STOPWATCH_STATE.started ? 
                     (
                       <button type="submit" className="btn btn-success countdown-app__button-nav">
                         <i className="fas fa-play"></i>
@@ -161,7 +158,7 @@ class Stopwatch extends PureComponent {
                       <i className="fas fa-redo"></i>
                       <span>Reset!</span>
                     </a>
-                    <a className="btn btn-info countdown-app__button-nav" onClick={this.props._changeScreen}>
+                    <a className="btn btn-info countdown-app__button-nav" onClick={this.props.onChangeScreen}>
                       <i className="fas fa-home"></i>
                       <span>Home</span>
                     </a>
