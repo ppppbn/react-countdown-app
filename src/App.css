@@ -21,15 +21,20 @@ html, body {
 }
 
 .countdown-app__button-submit {
-  margin: 20px;
-  min-width: 80px;
+  margin: 10px 20px;
+  min-width: 110px;
   font-size: 16px;
   text-align: center;
 }
+@media screen and (max-width : 768px){
+  .countdown-app__button-submit {
+    margin: 10px;
+  }
+}
 
 .countdown-app__button-nav {
-  margin: 20px;
-  min-width: 80px;
+  margin: 10px 20px;
+  min-width: 110px;
   text-align: center;
   font-size: 18px;
 }
@@ -61,7 +66,7 @@ html, body {
   border: none;
   background: inherit;
   font-size: 24px;
-  width: 50px;
+  width: 60px;
   text-align: center;
 }
 
