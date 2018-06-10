@@ -42,7 +42,7 @@ class App extends PureComponent {
   render() {
     const screen = this.state.screen;
     return (
-      <div className="container-fluid full-height bg-primary">
+      <div className="container-fluid full-height animated-bg">
         { screen === SCREEN_STATE.countdown ? 
           ( 
             <div className="row full-height vertical-center text-center">

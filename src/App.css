@@ -43,6 +43,10 @@ html, body {
   margin: 0px 10px;
 }
 
+.countdown-app__time-span span{
+  font-family: 'Roboto Mono', monospace;
+}
+
 .countdown-app__helper-div {
   position: absolute;
   right: -20px;
@@ -68,6 +72,7 @@ html, body {
   font-size: 24px;
   width: 60px;
   text-align: center;
+  font-family: "Roboto Mono", monospace;
 }
 
 .stopwatch__separated-colon {
@@ -78,4 +83,56 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+.text-info {
+  color : #17a2b8;
+}
+
+.text-danger {
+  color : #dc3545;
+}
+
+.text-success {
+  color : #12852d;
+}
+
+.text-violet {
+  color : #cd0acd;
+}
+
+.animated-bg {
+
+}
+
+@-webkit-keyframes Animation {
+  0%{background-position:0% 0%}
+  25%{ackground-position:50% 50%}
+  50%{background-position:100% 100%}
+  75%{ackground-position:50% 50%}
+  100%{background-position:0% 0%}
+}
+@-moz-keyframes Animation {
+  0%{background-position:0% 0%}
+  25%{ackground-position:50% 50%}
+  50%{background-position:100% 100%}
+  75%{ackground-position:50% 50%}
+  100%{background-position:0% 0%}
+}
+@keyframes Animation { 
+  0%{background-position:0% 0%}
+  25%{ackground-position:50% 50%}
+  50%{background-position:100% 100%}
+  75%{ackground-position:50% 50%}
+  100%{background-position:0% 0%}
+}
+
+.animated-bg {
+  animation: Animation 40s ease infinite;
+  -webkit-animation: Animation 40s ease infinite;
+  -moz-animation: Animation 40s ease infinite;
+  background-size: 200% 200% !important;
+  background: #CC95C0;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }

@@ -41,10 +41,10 @@ class Clock extends PureComponent {
   render() {
     return (
       <h4 className="text-white countdown-app__text-info">
-        <span className="countdown-app__time-span">{this._lead0(this.state.days)} Day(s)</span>  
-        <span className="countdown-app__time-span">{this._lead0(this.state.hours)} Hour(s)</span>  
-        <span className="countdown-app__time-span">{this._lead0(this.state.minutes)} Minute(s)</span>
-        <span className="countdown-app__time-span">{this._lead0(this.state.seconds)} Second(s)</span>
+        <span className="countdown-app__time-span"><span className="text-info">{this._lead0(this.state.days)}</span> Day(s)</span>  
+        <span className="countdown-app__time-span"><span className="text-success">{this._lead0(this.state.hours)}</span> Hour(s)</span>  
+        <span className="countdown-app__time-span"><span className="text-violet">{this._lead0(this.state.minutes)}</span> Minute(s)</span>
+        <span className="countdown-app__time-span"><span className="text-danger">{this._lead0(this.state.seconds)}</span> Second(s)</span>
       </h4>
     );
   }
