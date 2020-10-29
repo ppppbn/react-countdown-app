@@ -12,7 +12,7 @@ class App extends PureComponent {
   constructor(props) {
     super(props);
     this.state = { 
-      birthday : "January 1, 2020",
+      birthday : "February 03, 2021",
       birthdayToSeconds : 0,
       screen : SCREEN_STATE.countdown
     };
